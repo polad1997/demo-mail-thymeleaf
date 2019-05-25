@@ -2,24 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title th:text="#{email.activation.title}">PaymentPortal user creation</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <!--<link rel="shortcut icon" href="${baseUrl}/favicon.ico" />-->
 </head>
 <body>
-<!--<p th:text="#{email.activation.greeting(${userEntity.login})}">-->
+<p th:text="#{email.activation.greeting}">
   Dear
 </p>
-<p th:text="#{email.creation.text1}">
-  Your PaymentPortal account has been created, please click on the URL below to access it:
-</p>
+<h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
+<p th:text="#{email.creation.text1}"> This is test email.
+  <!--</p>-->
 <p>
   <!--<a th:href="@{|${baseUrl}/#/reset/finish?key=${userEntity.resetKey}|}"
      th:text="|${userEntity.login}|">login</a>-->
 </p>
 <p>
-  <span th:text="#{email.activation.text2}">Regards, </span>
+  <span th:text="#{email.activation.text2}">Regards</span>
   <br/>
-  <em th:text="#{email.signature}">PaymentPortal.</em>
+  <em th:text="#{email.signature}">Tekila Billing</em>
 </p>
 </body>
 </html>

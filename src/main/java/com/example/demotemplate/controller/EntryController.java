@@ -15,26 +15,10 @@ public class EntryController {
 
   @Autowired
   public EmailServiceImpl emailService;
-  String to;
-  String subject;
-  String text;
 
 
-  @GetMapping("/home")
-  public void home(Model model) {
-    emailService.sendSimpleMessage(to, subject,text);
-    model.addAttribute("title", "Hello World!");
-//    return "home";
-  }
-
-  @GetMapping("/send")
-  public String send() {
-    emailService.prepareAndSend("wekiller@inbox.ru", "Testttttttttt");
-    return "Succes!";
-  }
-
-  @PostMapping("/send2")
-  public String send(UserEntity userEntity) {
+  @PostMapping("/sendTemplate")
+  public String send(UserEntity userEntity) throws Exception {
     emailService.sendCreationEmail(userEntity);
     return "succes";
   }
