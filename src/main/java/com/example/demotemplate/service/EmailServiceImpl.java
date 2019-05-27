@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -45,7 +46,7 @@ public class EmailServiceImpl implements EmailService {
 
   public void sendCreationEmail(UserEntity userEntity) throws Exception {
     log.info("Sending creation email to '{}'", userEntity.getEmail());
-    sendEmailFromTemplate(userEntity, "creationEmail", "email.activation.title");
+    sendEmailFromTemplate(userEntity, "my-locale", "email.activation.title");
 
   }
 

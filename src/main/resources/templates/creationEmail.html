@@ -6,12 +6,12 @@
   <!--<link rel="shortcut icon" href="${baseUrl}/favicon.ico" />-->
 </head>
 <body>
-<p th:text="#{email.activation.greeting}">
+<p th:text="#{greeting}">
   Dear
 <h1 th:text="${name}"></h1>
 </p>
 <h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
-<p th:text="#{email.creation.text1}"> This is test email.
+<p th:text="#{lang.change}"> This is test email.
   <!--</p>-->
 <p>
   <!--<a th:href="@{|${baseUrl}/#/reset/finish?key=${userEntity.resetKey}|}"
@@ -24,3 +24,4 @@
 </p>
 </body>
 </html>
+
