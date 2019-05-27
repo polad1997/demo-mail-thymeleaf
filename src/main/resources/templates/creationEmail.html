@@ -8,6 +8,7 @@
 <body>
 <p th:text="#{email.activation.greeting}">
   Dear
+<h1 th:text="${name}"></h1>
 </p>
 <h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
 <p th:text="#{email.creation.text1}"> This is test email.
