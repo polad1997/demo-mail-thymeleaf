@@ -5,6 +5,7 @@ import com.example.demotemplate.service.EmailService;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import javax.mail.internet.MimeMessage;
+import org.apache.catalina.User;
 import org.apache.commons.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,7 @@ public class EmailServiceImpl implements EmailService {
 
   public void sendCreationEmail(UserEntity userEntity) throws Exception {
     log.info("Sending creation email to '{}'", userEntity.getEmail());
-    sendEmailFromTemplate(userEntity, "my-locale", "email.activation.title");
+    sendEmailFromTemplate(userEntity, "creationEmail", "email.activation.title");
 
   }
 
@@ -58,12 +59,6 @@ public class EmailServiceImpl implements EmailService {
         MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
         StandardCharsets.UTF_8.name());
 
-    log.info("sendEmailFromTemplate() method starts");
-
-    userEntity.setLangKey("eng");
-    userEntity.setEmail("wekiller@inbox.ru");
-    userEntity.setName("Polad");
-
     Locale locale = Locale.forLanguageTag(userEntity.getLangKey());
     Context context = new Context(locale);
     context.setVariable("name", userEntity.getName());
@@ -71,9 +66,8 @@ public class EmailServiceImpl implements EmailService {
 //    String subject = messageSource.getMessage(titleKey, null, locale);
     helper.setTo(userEntity.getEmail());
     helper.setText(content, true);
-    helper.setSubject("asdddsaasd");
+    helper.setSubject(userEntity.getSubject());
     helper.setFrom("alqayev1997@gmail.com");
-
     emailSender.send(mimeMessage);
 
   }
